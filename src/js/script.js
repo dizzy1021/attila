@@ -137,4 +137,32 @@ jQuery(function($) {
     });
   }
   gallery();
+
+   /* ==========================================================================
+     Dark Mode Toggle
+     ========================================================================== */
+  
+  var theme = localStorage.getItem('theme');
+  
+  if(theme == null) {
+    localStorage.setItem('theme', 'light');
+  }
+  else if(theme == 'dark') {
+    $("*").toggleClass("dark-theme");
+    $("#theme").removeClass('oi-sun').addClass('oi-moon');
+  }
+  
+  function changeTheme() {
+    if(theme == 'dark') {
+      localStorage.setItem('theme', 'light');
+      $("#theme").removeClass('oi-moon').addClass('oi-sun');
+    }
+    else if(theme == 'light') { 
+      localStorage.setItem('theme', 'dark');
+			$("#theme").removeClass('oi-sun').addClass('oi-moon');
+    }
+
+    $("*").toggleClass("dark-theme");
+  }
+  
 });
